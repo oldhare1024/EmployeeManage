@@ -15,7 +15,7 @@ public class BaseServlet extends HttpServlet {
     //所有的get和post都会进入到service方法中
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("GBK");
+        req.setCharacterEncoding("UTF-8");
         //获取方法名称
         String methodName = req.getParameter("method");
         try {
