@@ -10,7 +10,10 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();
 
     @Override
-    public boolean login(User user) {
+    public User login(User user) {
         return userDao.login(user);
+    }
+    public boolean updatePwd(User user) {
+        return userDao.updatePwd(user);
     }
 }

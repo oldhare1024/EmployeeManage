@@ -103,3 +103,8 @@
 		</div>
 	</body>
 </html>
+<script>
+	if(window.top !=this){
+		window.top.location="/employee/login.jsp";
+	}
+</script>
