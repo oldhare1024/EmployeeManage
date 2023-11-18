@@ -58,8 +58,16 @@ public class UserServlet extends BaseServlet{
         }
         return null;
     }
-    public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+    public void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String usernm =req.getParameter("newname");
+        String passwd =req.getParameter("newpwd");
+        User user=new User();
+        user.setUsername(usernm);
+        user.setPassword(passwd);
+        boolean registOk=userService.regist(user);
+        if(registOk){
+            resp.sendRedirect("/employee/login.jsp");
+        }
     }
     public void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();

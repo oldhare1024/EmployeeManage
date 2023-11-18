@@ -52,7 +52,6 @@
                             <img id="img" style="position:absolute;left:120px;bottom: -10px; width: 90px;height: 90px;border-radius: 100%"
                                  src="${user.img}"/>
                         </c:if>
-
                     </div>
 <%--                    <script type="text/javascript">--%>
 <%--                        //选择图片，马上预览--%>

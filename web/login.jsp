@@ -79,22 +79,22 @@
 						<h4 class="modal-title" id="myModalLabel">新用户注册</h4>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form action="/employee/user?method=regist" method="post">
 							<div class="form-group">
 								<label>用户名</label>
-								<input type="text" class="form-control" placeholder="请输入用户名">
+								<input type="text" class="form-control" id="newname" name="newname" placeholder="请输入用户名">
 							</div>
 							<div class="form-group">
 								<label>密码</label>
-								<input type="password" class="form-control" placeholder="请输入密码">
+								<input type="password" class="form-control" id="newpwd" name="newpwd" placeholder="请输入密码">
 							</div>
 							<div class="form-group">
 								<label>确认密码</label>
-								<input type="password" class="form-control" placeholder="请输入确认密码">
+								<input type="password" onblur="verifyNewPwd()" class="form-control" id="newpwd2" placeholder="请输入确认密码">
 							</div>
 
 							<div class="form-group">
-								<input type="submit" style="width: 100%;" class="btn btn-lg btn-success" data-dismiss="modal" value="注 册">
+								<input type="submit" style="width: 100%;" class="btn btn-lg btn-success"  value="注 册">
 							</div>
 						</form>
 					</div>
@@ -106,5 +106,12 @@
 <script>
 	if(window.top !=this){
 		window.top.location="/employee/login.jsp";
+	}
+	function verifyNewPwd() {
+		// 判断两次输入的密码是否相同
+		if ($('#newpwd').val() !== $('#newpwd2').val()) {
+			// 如果不同，显示错误信息
+			alert('两次输入的密码不相同！');
+		}
 	}
 </script>

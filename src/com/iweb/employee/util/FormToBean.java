@@ -6,8 +6,7 @@ import java.util.Map;
 
 public class FormToBean {
 
-    public static <T> T formToBean(Class<T> tClass,
-                                   Map<String,String[]> params){
+    public static <T> T formToBean(Class<T> tClass, Map<String,String[]> params){
         T t  = null;
         try {
              t = tClass.newInstance();

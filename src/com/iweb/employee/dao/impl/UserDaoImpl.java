@@ -10,14 +10,13 @@ import java.sql.SQLException;
 
 public class UserDaoImpl implements UserDao {
     
-    private QueryRunner qr = 
-            new QueryRunner(DruidUtil.getDataSource());
+    private QueryRunner qr = new QueryRunner(DruidUtil.getDataSource());
     
     @Override
     public User login(User user) {
-        String sql = "select * from t_user where " +
-                "username=? and password=?";
         try {
+            String sql = "select * from t_user where " +
+                    "username=? and password=?";
             user = qr.query(sql, new BeanHandler<>(User.class), user.getUsername()
                     , user.getPassword());
             //count.intValue():把包装类型转化成基本类型
@@ -27,6 +26,19 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public boolean regist(User user) {
+        try {
+            String sql = "insert into t_user values(0,?,?,null,null,null,null)";
+            int insert = qr.update(sql,user.getUsername(),user.getPassword());
+            return insert>0;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean updatePwd(User user){
         try {
             String sql = "update t_user set password= ? where username = ?";

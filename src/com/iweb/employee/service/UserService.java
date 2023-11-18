@@ -5,5 +5,6 @@ import com.iweb.employee.pojo.User;
 public interface UserService {
 
     User login(User user);
+    boolean regist(User user);
     boolean updatePwd(User user);
 }

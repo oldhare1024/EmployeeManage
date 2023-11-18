@@ -31,7 +31,7 @@
                     <label for="sitename">新密码：</label>
                 </div>
                 <div class="field">
-                    <input type="password" class="input w50" name="newpass" size="50" placeholder="请输入新密码"
+                    <input type="password" class="input w50" id="newpwd" name="newpass1" size="50" placeholder="请输入新密码"
                            data-validate="required:请输入新密码,length#>=5:新密码不能小于5位"/>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <label for="sitename">确认新密码：</label>
                 </div>
                 <div class="field">
-                    <input type="password" class="input w50" name="newpass" size="50" placeholder="请再次输入新密码"
+                    <input type="password" onblur="verifyNewPwd()" class="input w50" id="newpwd2" name="newpass" size="50" placeholder="请再次输入新密码"
                            data-validate="required:请再次输入新密码,repeat#newpass:两次输入的密码不一致"/>
                 </div>
             </div>
@@ -70,4 +70,11 @@
           }
           , 'text');
     }
+  function verifyNewPwd() {
+      // 判断两次输入的密码是否相同
+      if ($('#newpwd').val() !== $('#newpwd2').val()) {
+          // 如果不同，显示错误信息
+          alert('两次输入的密码不相同！');
+      }
+  }
 </script>
