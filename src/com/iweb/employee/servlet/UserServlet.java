@@ -43,8 +43,10 @@ public class UserServlet extends BaseServlet{
                 //登录成功，跳转到系统首页
                 //存储用户信息，使用session存储
                 session.setAttribute("user",user);
-                //设置session有效期
-                //session.setMaxInactiveInterval(20);
+                /*设置session有效期为3天
+                if(req.getParameter("save").equals("true")) {
+                    session.setMaxInactiveInterval(60 * 60 * 24 * 1);
+                }*/
                 //重定向到系统首页
                 resp.sendRedirect("/employee/index.jsp");
                 return user;
@@ -52,8 +54,7 @@ public class UserServlet extends BaseServlet{
                 //登录不成功
                 req.setAttribute("msg","用户名或密码输入错误");
                 //跳转到登录页面 转发、重定向
-                req.getRequestDispatcher("/login.jsp")
-                        .forward(req,resp);
+                req.getRequestDispatcher("/login.jsp").forward(req,resp);
             }
         }
         return null;
@@ -66,7 +67,11 @@ public class UserServlet extends BaseServlet{
         user.setPassword(passwd);
         boolean registOk=userService.regist(user);
         if(registOk){
-            resp.sendRedirect("/employee/login.jsp");
+            resp.sendRedirect("/employee/index.jsp");
+        }else {
+            req.setAttribute("msg","注册失败，用户名已被占用");
+            req.getRequestDispatcher("/login.jsp")
+                    .forward(req,resp);
         }
     }
     public void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

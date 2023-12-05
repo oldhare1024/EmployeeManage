@@ -57,8 +57,8 @@
 								</div>
 								<div class="checkbox">
 									<label style="font-family: 宋体;font-weight: bold;color: rgb(128,128,128);">
-										<input style="vertical-align: middle;" type="checkbox" value="">
-										两周内自动登录
+										<input style="vertical-align: middle;" type="checkbox" value="true" name="save">
+										1天内自动登录
 									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="#" data-toggle="modal" data-target="#myModal" style="font-style: italic;">没账号？点我注册</a>

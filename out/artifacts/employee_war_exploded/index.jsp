@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xxx
-  Date: 2023/11/3
-  Time: 14:03
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -40,7 +33,7 @@
     <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
     <h2><span class="icon-user"></span>基础数据</h2>
     <ul style="display:block">
-        <li><a href="employee.html" target="right"><span class="icon-magic"></span>员工管理</a></li>
+        <li><a href="/employee/emp?method=empList" target="right"><span class="icon-magic"></span>员工管理</a></li>
         <li><a href="dept.html" target="right"><span class="icon-foursquare"></span>部门管理</a></li>
     </ul>
     <h2><span class="icon-pencil-square-o"></span>用户管理</h2>

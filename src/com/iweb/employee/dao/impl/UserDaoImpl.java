@@ -5,6 +5,7 @@ import com.iweb.employee.pojo.User;
 import com.iweb.employee.util.DruidUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 
@@ -30,9 +31,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean regist(User user) {
         try {
-            String sql = "insert into t_user values(0,?,?,null,null,null,null)";
-            int insert = qr.update(sql,user.getUsername(),user.getPassword());
-            return insert>0;
+            String checkSql = "select count(*) from t_user where username = ?";
+            if((qr.query(checkSql, new ScalarHandler<Long>(),user.getUsername()))==0){//如果用户名未注册
+                String sql = "insert into t_user values(0,?,?,null,null,null,null)";
+                int insert = qr.update(sql,user.getUsername(),user.getPassword());
+                return insert>0;
+            }
+            else
+                return false;
         }catch (SQLException e){
             e.printStackTrace();
         }
